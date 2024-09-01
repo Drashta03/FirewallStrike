@@ -1,32 +1,48 @@
-# LogFury
+# Firewall Strike
 
-**LogFury** is a Java-based event logging system designed to capture and store events in a MySQL database. It provides a robust solution for tracking system errors, user actions, or other significant events, with an optional simple UI for viewing logged events.
+A robust Java-based Web Application Firewall (WAF) testing tool designed to identify security vulnerabilities and assess the effectiveness of WAFs.
 
-## Features
+## Overview
 
-- **Event Logging**: Seamlessly log events into a MySQL database.
-- **Simple UI**: (Optional) View and manage logs using a basic user interface.
-- **Scalable**: Easily extend or modify to fit specific needs.
+**Firewall Strike** is a tool for penetration testers and security analysts to simulate attacks and evaluate the security of web applications protected by WAFs. This tool allows users to log and analyze security events triggered by potential exploits.
+
+## Components
+
+- **`FirewallStrike.java`**: Main file to run the tool.
+- **`LogViewer.java`**: (Optional) Provides a simple UI to view logs.
 
 ## Prerequisites
 
-- **Java**: Version 8 or higher.
-- **MySQL**: A running MySQL database instance.
-- **MySQL Connector**: Ensure you have the `mysql-connector-java-x.x.x.jar` file added to your project.
+- Java 8 or higher
+- MySQL database
+- MySQL Connector JAR (`mysql-connector-java-x.x.x.jar`)
 
 ## Setup
 
-### Step 1: Database Configuration
+1. **Database Setup**:
+   - Create a MySQL database and table using the following SQL commands:
+     ```sql
+     CREATE DATABASE firewall_strike_db;
 
-Create a MySQL database and table to store the logs.
+     USE firewall_strike_db;
 
-```sql
-CREATE DATABASE event_db;
+     CREATE TABLE events (
+         id INT AUTO_INCREMENT PRIMARY KEY,
+         timestamp DATETIME NOT NULL,
+         event_description VARCHAR(255) NOT NULL
+     );
+     ```
 
-USE event_db;
+2. **Download MySQL Connector**:
+   - Download the MySQL Connector JAR from [MySQL's official website](https://dev.mysql.com/downloads/connector/j/).
+   - Add the JAR to your Java project's build path.
 
-CREATE TABLE events (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    timestamp DATETIME NOT NULL,
-    event_description VARCHAR(255) NOT NULL
-);
+3. **Update Configuration**:
+   - Replace placeholders in `FirewallStrike.java` with your MySQL database credentials and URL.
+
+## Installation
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/FirewallStrike.git
+   cd FirewallStrike
